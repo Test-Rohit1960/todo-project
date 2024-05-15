@@ -35,7 +35,13 @@ class TodoList:
 
         :param task: The task to be added.
         :return: A message indicating the task is added.
+
         """
+        try:
+            assert task.get_priority() in self.priority_map.keys()
+        except AssertionError:
+            return "Priority not found"
+
         if task.get_task_name() in self.hash_map:
             return "Duplicate entries are not allowed"
         if self.priority_map[task.get_priority()] is None:
@@ -75,6 +81,7 @@ class TodoList:
             # tasks.append(task_obj)
             return task_obj
 
+        return f"{task_name} does not exist"
         # tasks = []
         # for key in self.hash_map.keys():
         #     match = re.fullmatch(task_name, key)
@@ -108,7 +115,6 @@ class TodoList:
                 return_str += f"{task.__str__()}\n"
             return_str += "==============================================================\n"
         return return_str
-
 
 
 if __name__ == "__main__":

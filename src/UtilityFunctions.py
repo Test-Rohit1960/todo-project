@@ -25,10 +25,7 @@ def create_task(todo_list: TodoList) -> None:
     task_name = input("Enter the task name: ").casefold()
     task_priority = input("Set a task priority: ").casefold()
     task = Task(task_name, task_priority)
-    todo_list.add_task(task)
-    print("TASK")
-    print(task)
-    print("created")
+    print(todo_list.add_task(task))
 
 
 def edit_task(todo_list: TodoList) -> None:
@@ -55,9 +52,13 @@ def edit_task(todo_list: TodoList) -> None:
 
     if field == 'p' or field == 'b':
         new_priority = input("Enter the new priority: ").casefold()
-        todo_list.remove_task(task_name)
-        new_task = Task(task_name, new_priority)
-        todo_list.add_task(new_task)
+        if new_priority in todo_list.priority_map.keys():
+            todo_list.remove_task(task_name)
+            new_task = Task(task_name, new_priority)
+            print(todo_list.add_task(new_task))
+        else:
+            print("Priority not found")
+            return
     print("Task edited!")
 
 

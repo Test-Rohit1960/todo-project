@@ -62,5 +62,5 @@ class Task:
         return f"Task Id: {self.get_task_id()}\nTask Name: {self.get_task_name()}\nTask Priority: {self.get_priority()}"
 
 
-task1 = Task("Buy Milk", "High")
-task2 = Task("Buy soyabean", "Low")
+# task1 = Task("Buy Milk", "High")
+# task2 = Task("Buy soyabean", "Low")
